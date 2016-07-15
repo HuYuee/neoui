@@ -33,6 +33,7 @@ u.Combo = u.BaseComponent.extend({
         }else{
             u.on(this._input, 'blur', function(e){
                 var v = this.value;
+                if(!v) return;
                 /*校验数值是否存在于datasource的name中*/
                 for(var i = 0; i< self.comboDatas.length;i++){
                     if(v == self.comboDatas[i].name){
