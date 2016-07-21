@@ -376,14 +376,19 @@ u.extend(u, {
 	},
 	showPanelByEle:function(obj){
 		var ele = obj.ele,panel = obj.panel,position = obj.position,
-			off = u.getOffset(ele),scroll = u.getScroll(ele),
-			offLeft = off.left,offTop = off.top,
-			scrollLeft = scroll.left,scrollTop = scroll.top,
-			eleWidth = ele.offsetWidth,eleHeight = ele.offsetHeight,
-			panelWidth = panel.offsetWidth,panelHeight = panel.offsetHeight,
+			// off = u.getOffset(ele),scroll = u.getScroll(ele),
+			// offLeft = off.left,offTop = off.top,
+			// scrollLeft = scroll.left,scrollTop = scroll.top,
+			// eleWidth = ele.offsetWidth,eleHeight = ele.offsetHeight,
+			// panelWidth = panel.offsetWidth,panelHeight = panel.offsetHeight,
 			bodyWidth = document.body.clientWidth,bodyHeight = document.body.clientHeight,
 			position = position || 'top',
-			left = offLeft - scrollLeft,top = offTop - scrollTop;
+			// left = offLeft - scrollLeft,top = offTop - scrollTop,
+			eleRect = obj.ele.getBoundingClientRect(),
+			panelRect = obj.panel.getBoundingClientRect(),
+			eleWidth = eleRect.width,eleHeight = eleRect.height,
+			left = eleRect.left,top = eleRect.top,
+			panelWidth = panelRect.width,panelHeight = panelRect.height;
 			// 基准点为Ele的左上角
 			// 后续根据需要完善
 		if(position == 'left'){
