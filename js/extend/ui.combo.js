@@ -123,6 +123,8 @@ u.Combo = u.BaseComponent.extend({
                 this.comboDatas.push({name:datas[i][options.name],value:datas[i][options.value]});
             }
         }
+        this.value = '';
+    	this._input.value = '';
         if (!this._ul) {
             this._ul = u.makeDOM('<ul class="u-combo-ul"></ul>');
             // this.element.parentNode.appendChild(this._ul);
