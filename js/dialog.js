@@ -34,6 +34,7 @@ var dialogMode = function(options){
     this.width = options['width'];
     this.height = options['height'];
     this.lazyShow = options['lazyShow'];
+    this.closeCb = options['closeCb'];
     this.create();
 
     this.resizeFun = function(){
@@ -74,6 +75,9 @@ dialogMode.prototype.create = function(){
 	if(this.hasCloseMenu){
 		this.closeDiv = this.templateDom.querySelector('.u-msg-close');
 		u.on(this.closeDiv,'click',function(){
+			if(oThis.closeCb) {
+				if(oThis.closeCb.call(oThis) === false) return;
+			}
 			oThis.close();
 		});
 	}
